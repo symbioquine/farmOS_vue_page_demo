@@ -1,3 +1,8 @@
+/docker/db
+/docker/www
+/node_modules
+.project
+
 # gitignore template for Drupal 8 projects
 #
 # earlier versions of Drupal are tracked in `community/PHP/`
