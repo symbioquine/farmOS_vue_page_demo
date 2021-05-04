@@ -35,6 +35,31 @@ The Composer `package.json` file is intentionally not included at the root of th
 
 Due to [how Packagist works](https://packagist.org/about), the main branch for the Git repository must be set to `release` to ensure Packagist can find the Composer `package.json` file.
 
+### Okay, but how about live reload for development?
+
+The `docker/` directory of the [development branch][development branch] of this repository contains a `docker-compose.yml` file which mounts the `farmos_vue_demo_page/` directory of this repository
+into the container. That directory is then used as a repository source for Composer to install the Drupal module from. If the Javascript part of this package has already been built, then the module
+will function correctly when accessing the farmOS server at http://localhost:80/vue_demo_page, but will not have live-reloading for the Vue.js code.
+
+Next, the Webpack Dev server is used to proxy the farmOS container but replace requests for the assets associated with this module with the development versions - which have special code injected in
+them to support live reloading whenever the Vue.js source code changes.
+
+### How do you push new versions?
+
+From the [development branch][development branch] of this repository:
+
+```sh
+# Add/commit your changes
+git add [...]
+# Update NPM package version and commit
+npm --no-git-tag-version version --force patch
+git commit
+# Tag the release with the unbuilt prefix
+git tag unbuilt-v9000.0.1
+# Push the development branch and new tag
+git push --atomic origin HEAD:development unbuilt-v9000.0.1
+```
+
 ## Development
 
 From the [development branch][development branch] of this repository:
