@@ -1,6 +1,8 @@
 # farmOS_vue_page_demo
 
-A contrib module for farmOS demonstrating a packaging strategy for a page built with Vue.js
+A contrib module for [farmOS](https://farmos.org/) demonstrating a packaging strategy for a page built with [Vue.js](https://vuejs.org/)
+
+*Note: Some branches and tags include only the built module. See the [development branch][development branch] for the full source code.*
 
 ## Installation
 
@@ -31,18 +33,20 @@ code either to the `release` branch or to regular semantically versioned tags.
 
 The Composer `package.json` file is intentionally not included at the root of the repository for the unbuilt source code.
 
-Due to how Packagist works, the main branch for the Git repository must be set to `release` to ensure Packagist can find the Composer `package.json` file.
+Due to [how Packagist works](https://packagist.org/about), the main branch for the Git repository must be set to `release` to ensure Packagist can find the Composer `package.json` file.
 
 ## Development
 
-Start/recreate the farmOS container;
+From the [development branch][development branch] of this repository:
+
+**Start/recreate the farmOS container;**
 
 ```sh
 cd docker/
 ./destroy_and_recreate_containers.sh
 ```
 
-Run the dev proxy server;
+**Run the dev proxy server;**
 
 ```sh
 npm install
@@ -50,3 +54,5 @@ npm run dev
 ```
 
 Access the demo page at http://localhost:8080/vue_demo_page
+
+[development branch]: https://github.com/symbioquine/farmOS_vue_page_demo/tree/development
